@@ -2,8 +2,13 @@
 const express = require('express');
 const router = express.Router();
 
+const Tasks = require('./model')
+
 router.get('/', (req, res) => {
-    res.send('success')
+    Tasks.get().then((tasks) => {
+        res.status(200).json(tasks)
+    })
+    .catch(err => console.log(err))
 })
 
 module.exports = router;
