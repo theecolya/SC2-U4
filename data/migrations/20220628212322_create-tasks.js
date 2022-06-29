@@ -12,7 +12,7 @@
             .unsigned()
             .references('project_id')
             .inTable('projects')
-            .onDelete('CASCADE')
+            .onDelete('CASCADE');
     })
   };
   

@@ -9,7 +9,7 @@ exports.seed = async function(knex) {
   await knex('projects').del()
   await knex('projects').insert([
     {
-      project_name: 'rowValue1',
+      project_name: 'firstProj',
       project_description: 'it is what it is'
     },
     {
