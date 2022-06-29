@@ -19,10 +19,15 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
     Projects.add(req.body).then((project) => {
-        if(project.project_completed === 0) {
+        if(!req.body.project_name) {
+            return res.status(400).json('Ouch: Project name required')
+        };
+        if(project.project_completed === 0 &&
+            req.body.project_name) {
             project.project_completed = false
             return res.status(201).json(project)
-        } else {
+        } else if (project.project_completed === 1 &&
+            req.body.project_name) {
             project.project_completed = true
             return res.status(201).json(project)
         }
