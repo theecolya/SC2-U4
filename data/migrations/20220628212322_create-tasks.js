@@ -7,12 +7,12 @@
       tbl.increments('task_id').notNullable();
       tbl.text('task_description').notNullable();
       tbl.text('task_notes');
-      tbl.boolean('task_completed').notNullable().defaultTo('false');
+      tbl.boolean('task_completed').defaultTo(false);
       tbl.integer('project_id')
             .unsigned()
-            .notNullable()
             .references('project_id')
             .inTable('projects')
+            .onDelete('CASCADE')
     })
   };
   

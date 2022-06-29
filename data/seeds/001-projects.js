@@ -4,16 +4,21 @@
  */
 exports.seed = async function(knex) {
   // Deletes ALL existing entries
+  await knex('tasks').del()
+  await knex('project_resources').del()
   await knex('projects').del()
   await knex('projects').insert([
-    {project_id: 1, project_name: 'rowValue1',
-     project_description: 'it is what it is',
-     project_completed: 'false'},
-    {project_id: 2, project_name: 'rowValue2',
-     project_description: 'it is what it is',
-     project_completed: 'false'},
-    {project_id: 3, project_name: 'rowValue3',
-     project_description: 'it is what it is',
-     project_completed: 'false'}
-  ]);
+    {
+      project_name: 'rowValue1',
+      project_description: 'it is what it is'
+    },
+    {
+      project_name: 'rowValue2',
+      project_description: 'it is what it is'
+    },
+    {
+      project_name: 'rowValue3',
+      project_description: 'it is what it is'
+    }
+  ])
 };
