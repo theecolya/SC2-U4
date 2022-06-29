@@ -6,7 +6,11 @@ function get() {
 }
 
 function getById(id) {
-    return db('projects').where('project_id', id).first()
+    if( id ) {
+        return db('projects').where('project_id', id).first()
+    } else {
+        return db('projects').first()
+    }
 }
 function add(project) {
     return db('projects').insert(project)

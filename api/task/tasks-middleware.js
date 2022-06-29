@@ -1,10 +1,9 @@
 const Projects = require('../project/model')
-const db = require("../../data/dbConfig.js")
 
 const checkReqs = (req, res, next) => {
     Projects.getById(req.body.project_id).then(
         project => {
-            if(project == undefined) {
+            if(!project) {
                 res.status(400).json('Ouch: Project id not found')
             }
         }
